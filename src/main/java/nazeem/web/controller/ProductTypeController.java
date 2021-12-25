@@ -20,7 +20,7 @@ public class ProductTypeController {
 
     private String add_edit_template="/admin/producttype/add-edit-producttype";
     private String list_template="/admin/producttype/list-producttype";
-    private String list_redirect="redirect:/admin/producttype/list";
+    private String list_redirect="redirect:/producttype/list";
 
     @GetMapping("/add")
     public String addProductType(ProductType producttype, Model model){
@@ -46,14 +46,14 @@ public class ProductTypeController {
         }
         productTypeService.save(producttype);
 
-        return list_redirect;
+        return list_redirect+"?success";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteProductType(@PathVariable("id") int id, Model model) {
         productTypeService.delete(id);
 
-        return list_redirect;
+        return list_redirect+"?deleted";
     }
 
     @GetMapping("/list")

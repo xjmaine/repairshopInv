@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>RHD</b> Repair Shop</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -36,7 +36,7 @@
         </div>
         <form th:action="@{/login}" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" name="username" required placeholder="Email">
+                <input type="text" class="form-control" name="username" required placeholder="Username/Pin">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
@@ -59,7 +59,7 @@
             </div>
         </form>
 
-        <a th:href="@{/register}" class="text-center">Register a new membership</a>
+        <a th:href="@{/register}" class="text-center">Register new member</a>
 
     </div>
     <!-- /.login-box-body -->

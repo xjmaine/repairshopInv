@@ -13,9 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("/product")
@@ -64,7 +61,7 @@ public class ProductController {
         }
 
         productService.save(product);
-        return list_redirect;
+        return list_redirect+"?success";
     }
 
 
@@ -73,7 +70,7 @@ public class ProductController {
     public String deleteProduct(@PathVariable("id") long id, Model model) {
         productService.delete(id);
 
-        return list_redirect;
+        return list_redirect+"?deleted";
     }
 
     @GetMapping("/list")
@@ -86,31 +83,4 @@ public class ProductController {
 
         return list_template;
     }
-    /*@GetMapping("/list")
-    public String listProduct(Model model
-            ,@RequestParam("search") Optional<String> search
-            ,@RequestParam("page") Optional<Integer> page
-            ,@RequestParam("size") Optional<Integer> size)
-    {
-
-        int currentPage = page.orElse(1);
-        int pageSize = size.orElse(5);
-        String criteria = search.orElse("");
-
-        List<ProductType> productTypes = productTypeService.listAll();
-        model.addAttribute("productTypes",productTypes);
-
-        Page<Product> listProducts = productService.findPaginated(criteria, PageRequest.of(currentPage - 1, pageSize));
-        model.addAttribute("listProducts", listProducts);
-
-        int totalPages = listProducts.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                    .boxed()
-                    .collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-        }
-
-        return list_template;
-    }*/
 }

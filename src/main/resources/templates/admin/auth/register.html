@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>RHD</b> Admin</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -31,15 +31,14 @@
             </div>
         </div>
 
-        <div th:if="${param.username}">
+        <div th:if="${param.userName}">
             <div class="alert alert-danger">
                 There is already a user registered with the username/email provided.
             </div>
         </div>
 
         <div th:if="${param.success}">
-            <div class="alert alert-info">You've successfully registered
-                to our awesome app!</div>
+            <div class="alert alert-info">User registration is successful! </div>
         </div>
 
         <form th:action="@{/register}" th:object="${userRegistrationDto}" method="post">
@@ -54,7 +53,7 @@
             </div>
 
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" th:field="*{userName}" required placeholder="email">
+                <input type="text" class="form-control" th:field="*{userName}" required placeholder="User ID / Username">
                 <span class="glyphicon glyphicon-leaf form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">

@@ -13,6 +13,29 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+        
+        <!-- List for Settings -->
+        <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-th"></i> <span>Settings</span>
+                <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+            </a>
+            <ul class="treeview-menu">
+<!--
+                <li class="active"><a href="/"><i class="fa fa-dashboard"></i> Dashboard v1</a></li>
+-->
+                <li><a th:href="@{/producttype/list}"><i class="fa fa-circle-o"></i> Item Type</a></li>
+                <li><a th:href="@{/staff/list}"><i class="fa fa-circle-o"></i> Staff</a></li>                
+                <li><a href="#"><i class="fa fa-circle-o"></i> User Role</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Export/Stats Data</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> View Logs</a></li>
+                
+            </ul>
+        </li>
+        
+        <!-- List for Options -->
         <li class="active treeview">
             <a href="#">
                 <i class="fa fa-th"></i> <span>Options</span>
@@ -25,11 +48,26 @@
                 <li class="active"><a href="/"><i class="fa fa-dashboard"></i> Dashboard v1</a></li>
 -->
 
-                <li class="active"><a th:href="@{/product/list}"><i class="fa fa-circle-o"></i> Product</a></li>
-                <li><a th:href="@{/producttype/list}"><i class="fa fa-circle-o"></i> Product Type</a></li>
+                <li class="active"><a th:href="@{/product/list}"><i class="fa fa-circle-o"></i> Jobs List</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Pending</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Completed</a></li>
+            </ul>
+        </li>
+        
+        <!-- List for Access -->
+        <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-th"></i> <span>Access</span>
+                <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+            </a>
+            <ul class="treeview-menu">
+
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="fa fa-circle-o"></i> Logout</a></li>
             </ul>
         </li>
+        
     </ul>
 </section>
 <!-- /.sidebar -->

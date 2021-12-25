@@ -3,17 +3,17 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorate="layout">
 <head>
-    <title>Product Details</title>
+    <title>Item Details</title>
 </head>
 <body>
 <section layout:fragment="header">
     <h1>
-        Product Detail
+        Item Details
         <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Product Details</li>
+        <li class="active">Item Details</li>
     </ol>
 </section>
 <div layout:fragment="content">
@@ -22,32 +22,39 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Product Detail</h3>
+                    <h3 class="box-title">Item Detail</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
                 <form th:action="@{/product/save}" th:object="${product}" method="post" class="form-horizontal">
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Product Id</label>
+                            <label class="col-sm-2 control-label">Item Id</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Product ID">
+                                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Item ID">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Product Type:<span>*</span></label>
+                            <label class="col-sm-2 control-label">Item Type:<span>*</span></label>
                             <div class="col-sm-10">
-                                <select class="form-control" th:field="*{productTypeId}">
+                                <select class="form-control" th:field="*{itemTypeId}">
                                     <option value="">Select...</option>
                                     <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:utext="${productType.name}"/>
                                 </select>
-                                <p class="text-red" th:if="${#fields.hasErrors('productTypeId')}" th:errors="*{productTypeId}"></p>
+                                <p class="text-red" th:if="${#fields.hasErrors('itemTypeId')}" th:errors="itemTypeId"></p>
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label">Item Description</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{item_description}" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Name</label>
+                            <label class="col-sm-2 control-label">Client Name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"  th:field="*{name}" />
                                 <p class="text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
@@ -55,24 +62,35 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Brand</label>
+                            <label class="col-sm-2 control-label">Fault/Issue</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" th:field="*{brand}" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Made in</label>
+                            <label class="col-sm-2 control-label">Unit/Dept</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" th:field="*{madein}" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Price</label>
+                            <label class="col-sm-2 control-label">Phone/Email</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{price}" />
-                                <p class="text-red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+                                <input type="text" class="form-control" th:field="*{phone}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label">Staff Assigned<span>*</span></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" th:field="*{staffId}">
+                                    <option value="">Select...</option>
+                                    <option th:each="staff : ${staffs}" th:value="${staff.staffId}" th:utext="${staff.staffName}"/>
+                                </select>
+                                <p class="text-red" th:if="${#fields.hasErrors('staffId')}" th:errors="*{staffId}"></p>
                             </div>
                         </div>
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Item Details</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>
+        Item Details
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Item Details</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Item Detail</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form th:action="@{/staff/save}" th:object="${staff}" method="post" class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Staff Id</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  readonly="readonly" th:field="*{staffId}" placeholder="Staff ID">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-sm-2 control-label">Item Type:<span>*</span></label>
+                            <div class="col-sm-10">
+                                <select class="form-control" th:field="*{itemTypeId}">
+                                    <option value="">Select...</option>
+                                    <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:utext="${productType.name}"/>
+                                </select>
+                                <p class="text-red" th:if="${#fields.hasErrors('itemTypeId')}" th:errors="itemTypeId"></p>
+                            </div>
+                        </div>-->
+                        
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label">Staff Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{staffName}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Staff Expertise</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  th:field="*{staffSkills}" />
+                               <!--  <p class="text-red" th:if="${#fields.hasErrors('staffSkills')}" th:errors="*{staffSkills}"></p>-->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Status</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{staffStatus}" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Phone/Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{contact}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Jobs Assigned</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{jobsAssigned}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Date Assigned</label>
+                            <div class="col-sm-10">
+                                <input type="datetime-local" class="form-control" th:field="*{dateAssigned}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('dateAssigned')}" th:errors="*{dateAssigned}"></p>
+                            </div>
+                        </div>
+                        
+                         
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer center">
+                        <a th:href="@{/staff/list}">
+                            <button type="button" class="btn btn-default"><i class="fa fa-right"></i> Cancel</button>
+                        </a>
+                        <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+    </script>
+</th:block>
+
+</body>
+
+</html>

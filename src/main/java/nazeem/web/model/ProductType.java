@@ -1,8 +1,8 @@
 package nazeem.web.model;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.List;
 
 @Entity
 @Table(name="product_type")
@@ -25,8 +25,8 @@ public class ProductType {
     }
 
 
-    @NotEmpty(message = "Name can't be empty!")
     @Column(name = "name")
+    @NotEmpty(message = "Name can't be empty!")
     private String name;
 
     public String getName(){
